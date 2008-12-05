@@ -1,3 +1,23 @@
 = Flash Content
 
-Description goes here
+Flash Content is a simple Radiant extension to help reference Adobe flash files within Radiant's pages, snippets and layouts.
+
+= Download and Install
+
+To install flash content, jun run
+
+  cd <RADIANT ROOT>
+  git clone git://github.com/ceaser/radiant-flash_content-extension.git vendor/extensions/flash_content
+  rake production radiant:extensions:flash_content:update
+
+= Using
+
+There are two new tags included with the flash content extension. 
+
+Required to add a reference to the swfobject script
+<r:flash_content:include />
+
+Writes the code necessary to reference and start a flash animation
+<r:flash_content:link />
+
+Detail documenation and usage examples are available inside the page admin under the "Available Tags" links

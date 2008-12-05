@@ -2,16 +2,18 @@
 # require_dependency 'application'
 
 class FlashContentExtension < Radiant::Extension
-  version "1.0"
-  description "Describe your extension here"
-  url "http://yourwebsite.com/flash_content"
+  version "0.1"
+  description "Adds tags to make it easier to embed Adobe Flash content"
+  url "http://github.com/ceaser/radiant-flash_content-extension"
   
   # define_routes do |map|
   #   map.connect 'admin/flash_content/:action', :controller => 'admin/flash_content'
   # end
   
   def activate
-    # admin.tabs.add "Flash Content", "/admin/flash_content", :after => "Layouts", :visibility => [:all]
+    Page.send :include, FlashContentTags
+
+    Radiant::Config["flash_content.required_version"] = "9.0.0" if Radiant::Config["flash_content.required_version"].nil?
   end
   
   def deactivate
