@@ -51,7 +51,7 @@ module FlashContentTags
     parameters["height"] = tag.attr["height"]
     parameters_string    = parameters.map {|k,v| "#{k}='#{v}'"}.join(" ")
 
-    alternative_content = tag.locals.page.part(alternative_part).content unless alternative_part.nil?
+    alternative_content = tag.locals.page.render_part(alternative_part) unless alternative_part.nil?
 <<-EOL
 <script type="text/javascript">
 //<![CDATA[
