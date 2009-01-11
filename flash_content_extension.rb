@@ -11,6 +11,12 @@ class FlashContentExtension < Radiant::Extension
   # end
   
   def activate
+    begin
+      return if ActiveRecord::Migrator.current_version == 0
+    rescue
+      return
+    end
+
     Page.send :include, FlashContentTags
 
     Radiant::Config["flash_content.required_version"] = "9.0.0" if Radiant::Config["flash_content.required_version"].nil?
